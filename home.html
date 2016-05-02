@@ -1,0 +1,110 @@
+ <!DOCTYPE html>
+<html  style="overflow-x: hidden;">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="Resource-type" content="Document">
+    <!--禁止缩放-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!--禁止数字识别为手机号-->
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache">
+    <link type="text/css" href="index.css" rel="stylesheet">
+    <title>嘿云作业</title>
+</head>
+<body>
+    <div id="work-detail-panel">
+         <div id="detail-main">
+            <div class="touchSlider">
+                <ul id="slider4" >
+                    <li >
+                        <a href="#">
+                            <img src="assets/1.png" alt="">
+                        </a>
+                    </li>
+                    <li >
+                        <a href="#">
+                            <img src="assets/2.png" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="assets/9.png" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="assets/1.png" alt="">
+                        </a>
+                        </li>
+                </ul>
+                <div id="currentPage">
+                    <ul>
+                        <li class="active"></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+            </div>
+            </div>
+
+        </div>
+        <div class="detail-bottom-btns">
+            <div>
+                <div class="item">
+                    <div class="btn">
+                        <div class="color-block down"><span class="icon-download"></span></div>
+                        <div class="label">下载</div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="btn">
+                        <div class="color-block link"><span class="icon-link"></span></div>
+                        <div class="label">复制链接</div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="btn">
+                        <div class="color-block share"><span class="icon-open"></span></div>
+                        <div class="label">分享</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="zepto.min.js"></script>
+<script type="text/javascript" src="touchSlider-lib.js"></script>
+<script type="text/javascript">
+       /*滑动图片*/
+    function initTouchSlider(){
+        var h=$('body').height();
+        $('#detail-main').height(h-135).css('opacity','1');
+        var t4=new TouchSlider('slider4',{speed:1000, direction:0, interval:2000, fullsize:true});
+        t4.on('before',function(m,n){
+            console.log(m+','+n);
+            $('#currentPage ul li').eq(n).addClass('active').siblings().removeClass('active');
+            // as[m].className='';
+            // as[n].className='active';
+        });
+        $('#currentPage ul li').on('touchend',function (e) {
+            var index=$(this).index();
+            t4.slide(index);
+            // $(this).hide();
+            // $('#slider4').show();
+            // window.setTimeout(function (argument) {
+            //     flag=true;
+            //     // body...
+            // },500);
+
+            // body...
+        });
+    };
+
+    initTouchSlider();
+
+</script>
+</html>
